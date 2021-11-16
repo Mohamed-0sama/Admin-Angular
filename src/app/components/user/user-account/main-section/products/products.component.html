@@ -1,0 +1,105 @@
+<h3>Today Date: {{ todayDate | date: "mediumDate" }}</h3>
+<div class="mb-3">
+  <label for="" class="form-label">Select Category:</label>
+  <select
+    name="cat"
+    id="catDDL"
+    class="form-select"
+    [(ngModel)]="selectedCategory"
+  >
+    <!-- <option  >ALL</option> -->
+    <option *ngFor="let cat of getCategory()" [value]="cat.id">
+      {{ cat.Name }}
+    </option>
+  </select>
+</div>
+<hr />
+<button mat-flat-button color="accent" (click)="addData()" class="demo-button">
+  Add data
+</button>
+<button
+  mat-flat-button
+  color="warn"
+  [disabled]="!getProductsByCatID().length"
+  (click)="removeData()"
+  class="demo-button m-2"
+>
+  Remove data
+</button>
+<table mat-table class="table table-hover table-striped">
+  <thead>
+    <tr>
+      <th>No.</th>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Quantity</th>
+      <th>Details</th>
+      <th>Image</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      *ngFor="let prd of getProductsByCatID(); let i = index"
+      [ngSwitch]="prd.Quantity"
+    >
+      <td>{{ i + 1 }}</td>
+      <td
+        [ngClass]="{
+          'text-danger': prd.Quantity == 0,
+          'text-warning': prd.Quantity == 1,
+          'text-primary': prd.Quantity > 2
+        }"
+      >
+        {{ prd?.Name | uppercase }}
+      </td>
+      <td>{{ prd.Price | currency: "EGP":"symbol" }}</td>
+      <td *ngSwitchCase="0">out of stock</td>
+      <td *ngSwitchCase="1">Last item</td>
+      <td *ngSwitchCase="2">Two items only available</td>
+      <td *ngSwitchDefault>
+        <div *ngIf="prd.Quantity; else OutOfStock">{{ prd?.Quantity }}</div>
+        <ng-template #OutOfStock>Out of Stock</ng-template>
+      </td>
+      <td>
+        <button
+          mat-flat-button
+          color="primary"
+          (click)="viewProduct(prd.id)"
+          >Details</button
+        >
+      </td>
+      <td><img [src]="prd.ImgURL" alt="" /></td>
+    </tr>
+  </tbody>
+</table>
+
+<!--
+<button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon button with a vertical three dot icon">
+  <mat-icon>more_vert</mat-icon>
+ </button> -->
+<!-- </button>
+<mat-menu #menu="matMenu" yPosition="below">
+<button mat-menu-item>view</button>
+<button mat-menu-item>edit</button>
+<button mat-menu-item>delete</button>
+</mat-menu> -->
+
+<!-- <button mat-icon-button [matMenuTriggerFor]="menu1" aria-label="Example icon-button with a menu">
+  <mat-icon>more_vert</mat-icon>
+</button>
+ -->
+
+<!-- <mat-menu #menu1="matMenu">
+  <button mat-menu-item>
+    <mat-icon>dialpad</mat-icon>
+    <span>Redial</span>
+  </button>
+  <button mat-menu-item disabled>
+    <mat-icon>voicemail</mat-icon>
+    <span>Check voice mail</span>
+  </button>
+  <button mat-menu-item>
+    <mat-icon>notifications_off</mat-icon>
+    <span>Disable alerts</span>
+  </button>
+</mat-menu> -->
