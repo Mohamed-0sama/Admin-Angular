@@ -1,34 +1,47 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import {UsersService} from '../../../../../services/users.service'
+import { Component, OnInit } from '@angular/core';
+import { UsersFromApiService } from 'src/app/services/users-from-api.service';
+import { UserAPI } from 'src/app/models/user-api';
+import { UserStats } from 'src/app/models/user-stats';
+import { environment } from 'src/environments/environment';
 import {Subject} from 'rxjs';
-// import {DataTableDirective} from 'angular-datatables';
+
 @Component({
   selector: 'app-customers',
   templateUrl: './customers.component.html',
   styleUrls: ['./customers.component.scss']
 })
-export class CustomersComponent implements OnInit, OnDestroy {
-  allUsers: any = [];
+
+  
+export class CustomersComponent implements OnInit{
+  
+  ImagesUrl: string = environment.ImagesURL;
+  todayDate: Date = new Date();
+  UserList: UserAPI[] = [];
+  SelectedUser!: UserAPI;
+  UserStats!: UserStats;
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject<any>();
-  constructor(private service: UsersService) { }
 
+  constructor(private userSerAPI: UsersFromApiService) {
+  }
   ngOnInit(): void {
-    this.users();
+    this.userSerAPI.getAllUsers()
+    .subscribe(usersList => {
+      this.UserList = usersList;
+      //console.log(this.UserList)
+    },
+      err => {
+        console.log(err);
+      });
   }
-
-  users(): void {
-   this.allUsers =
-   this.service
-        .users()
-        // .subscribe((response: any) => {
-        //   this.allUsers = response.data;
-        // //  initiate our data table
-        // // this.dtTrigger.next();
-        // });
-  }
-  ngOnDestroy(): void {
-    // this.dtTrigger.unsubscribe();
+  showUserStats(){
+    this.userSerAPI.getUserStats()
+    .subscribe(userstats => {
+      this.UserStats = userstats;
+      console.log(this.UserStats)
+    },
+      err => {
+        console.log(err);
+      });
   }
 }
-

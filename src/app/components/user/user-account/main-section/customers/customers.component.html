@@ -4,22 +4,24 @@
           <table class="table table-bordered table-striped table-hover" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
               <thead>
               <tr>
-                  <th>ID</th>
-                  <th>Name</th>
-                  <th>Username</th>
-                  <th>Email</th>
-                  <!-- <th>Phone number</th> -->
-                  <th>Address</th>
+                <th>No.</th>
+                <th>UserName</th>
+                <th>Email</th>
+                <!-- <th>Password</th> -->
+                <th>Image</th>
+                <th>View</th>
               </tr>
               </thead>
               <tbody>
-              <tr *ngFor="let user of allUsers">
-                  <td>{{ user.id }}</td>
-                  <td>{{ user.name }}</td>
-                  <td>{{ user.username }}</td>
-                  <td>{{ user.email }}</td>
-                  <!-- <td>{{ user.phone }}</td> -->
-                  <td>{{ user.address.street }} {{ user.address.city }}</td>
+              <tr *ngFor="let user of UserList; let i=index">
+                <td>{{i+1}}</td>
+                <td>{{user.username}}</td>
+                <td>{{user.email}}</td>
+                <!-- <td>{{user.password}}</td> -->
+                <td><img src="{{ImagesUrl}}{{user.imageSrc}}" alt="" width="200px" height="200px"></td>
+                <td>
+                    <a class="btn btn-primary" routerLink="//User/Account/Customers/{{user._id}}" role="button">View</a>
+                </td>
               </tr>
               </tbody>
           </table>

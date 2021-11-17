@@ -1,29 +1,20 @@
 <h3>Today Date: {{ todayDate | date: "mediumDate" }}</h3>
+
 <div class="mb-3">
   <label for="" class="form-label">Select Category:</label>
-  <select
-    name="cat"
-    id="catDDL"
-    class="form-select"
-    [(ngModel)]="selectedCategory"
-  >
-    <!-- <option  >ALL</option> -->
-    <option *ngFor="let cat of getCategory()" [value]="cat.id">
-      {{ cat.Name }}
-    </option>
+  <select name="cat" id="catDDL" class="form-select" [(ngModel)]="selectedCat" #selectItem
+    (change)="showProducts(selectItem.value)">
+
+    <option value="">All</option>
+    <option *ngFor="let cat of StaticCat" [value]="cat">{{cat}}</option>
   </select>
 </div>
 <hr />
+
 <button mat-flat-button color="accent" (click)="addData()" class="demo-button">
   Add data
 </button>
-<button
-  mat-flat-button
-  color="warn"
-  [disabled]="!getProductsByCatID().length"
-  (click)="removeData()"
-  class="demo-button m-2"
->
+<button mat-flat-button color="warn" (click)="removeData()" class="demo-button m-2">
   Remove data
 </button>
 <table class="table table-hover table-striped">
@@ -33,42 +24,35 @@
       <th>Name</th>
       <th>Price</th>
       <th>Quantity</th>
-      <th>Details</th>
+      <th>Description</th>
       <th>Image</th>
+      <th>View</th>
     </tr>
   </thead>
   <tbody>
-    <tr
-      *ngFor="let prd of getProductsByCatID(); let i = index"
-      [ngSwitch]="prd.Quantity"
-    >
+
+    <tr *ngFor="let prd of ProductList; let i=index" [ngSwitch]="prd.quantity">
       <td>{{ i + 1 }}</td>
-      <td
-        [ngClass]="{
-          'text-danger': prd.Quantity == 0,
-          'text-warning': prd.Quantity == 1,
-          'text-primary': prd.Quantity > 2
-        }"
-      >
-        {{ prd?.Name | uppercase }}
+      <td [ngClass]="{
+          'text-danger': prd.quantity == 0,
+          'text-warning': prd.quantity == 1,
+          'text-primary': prd.quantity > 2
+        }">
+        {{ prd?.title | uppercase }}
       </td>
-      <td>{{ prd.Price | currency: "EGP":"symbol" }}</td>
+      <td>{{ prd.price | currency: "EGP":"symbol" }}</td>
       <td *ngSwitchCase="0">out of stock</td>
       <td *ngSwitchCase="1">Last item</td>
       <td *ngSwitchCase="2">Two items only available</td>
       <td *ngSwitchDefault>
-        <div *ngIf="prd.Quantity; else OutOfStock">{{ prd?.Quantity }}</div>
+        <div *ngIf="prd.quantity; else OutOfStock">{{ prd?.quantity }}</div>
         <ng-template #OutOfStock>Out of Stock</ng-template>
       </td>
+      <td>{{ prd.desc }}</td>
+      <td><img src="{{ImagesUrl}}{{prd.imageSrc}}" alt="" width="200px" height="200px"></td>
       <td>
-        <button
-          mat-flat-button
-          color="primary"
-          (click)="viewProduct(prd.id)"
-          >Details</button
-        >
+        <a class="btn btn-primary" routerLink="//User/Account/Products/{{prd._id}}" role="button">View</a>
       </td>
-      <td><img [src]="prd.ImgURL" alt="" /></td>
     </tr>
   </tbody>
 </table>

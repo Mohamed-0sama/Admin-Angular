@@ -1,86 +1,83 @@
-import { HttpClient } from '@angular/common/http';
-import {
-  Component,
-  OnChanges,
-  OnDestroy,
-  OnInit,
-  SimpleChanges,
-  ViewChild,
-} from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { Category } from 'src/app/models/category';
-import { Product } from 'src/app/models/product';
-import { DataFromServerService } from 'src/app/services/data-from-server.service';
-import { ProductService } from '../../../../../services/product.service';
+import { ProductsFromAPIService } from 'src/app/services/products-from-api.service';
+import { ProductAPI } from 'src/app/models/product-api';
+import { environment } from 'src/environments/environment';
+
 
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss'],
 })
-export class ProductsComponent implements OnInit, OnChanges, OnDestroy {
+export class ProductsComponent implements OnInit {
   // @ViewChild(MatTable) table: MatTable<PeriodicElement>
-  selectedCategory: number = 0;
-  prdList: Product[] = []
-  category! : Category
   subscription!: Subscription[]
-  todayDate: Date = new Date();
   imgHoverColor: string = 'green';
-  constructor(
-    private prdService: ProductService,
-    private DataFrmServer: DataFromServerService,
-    private router: Router
-  ) {}
-  ngOnDestroy(): void {
-    throw new Error('Method not implemented.');
+
+
+  ImagesUrl: string = environment.ImagesURL;
+  todayDate: Date = new Date();
+  ProductList: ProductAPI[] = [];
+  SelectedProduct!: ProductAPI;
+  selectedCat: string = "";
+  StaticCat: string[] = ["Mobiles", "Tablets", "Electronics", "Watches", "Televisions", "Fashion", "Clothes"];
+
+
+
+  constructor(private prdSerAPI: ProductsFromAPIService, private router: Router) {
+
   }
 
-  ngOnInit(): void {}
-  ngOnChanges(changes: SimpleChanges) {
-    console.log("welcome ");
 
-    let sub1, sub2;
-    if (this.selectedCategory != 0) {
-      sub1 = this.DataFrmServer.getProductsByCatID(this.selectedCategory)
-      .subscribe((products) => {
-        this.prdList = products;
-        console.log("welcome ");
+  ngOnInit(): void {
+    this.prdSerAPI.getAllProducts()
+    .subscribe(productList => {
+      this.ProductList = productList;
+      //console.log(this.ProductList)
+    },
+      err => {
+        console.log(err);
       });
-      this.subscription.push(sub1);
-    } else {
-      sub2 = this.DataFrmServer.getAllProducts().subscribe((products) => {
-        this.prdList = products;
-        //
+  }
+
+  showProducts(category:string) {
+    if(category === "") {
+    this.prdSerAPI.getAllProducts()
+      .subscribe(productList => {
+        this.ProductList = productList;
+        //console.log(this.ProductList)
+      },
+        err => {
+          console.log(err);
+        });
+      }
+      else {
+        this.prdSerAPI.getProductByCatName(category)
+        .subscribe(productList => {
+          this.ProductList = productList;
+          //console.log(this.ProductList)
+        },
+          err => {
+            console.log(err);
+          });
+      }
+        
+  }
+
+  showProductById(id:string){
+    this.prdSerAPI.getProductByID(id)
+    .subscribe(product => {
+      this.SelectedProduct = product;
+      console.log(this.SelectedProduct)
+    },
+      err => {
+        console.log(err);
       });
-      this.subscription.push(sub2);
-    }
   }
-  // AllProducts(): any {
-  //   this.selectedCategory = 0
-  //  return this.getProductsByCatID()
-  //  }
-  getProductsByCatID() {
-    console.log("welcome ");
-
-    // if(this.selectedCategory!=0)
-    //   return this.prdService.getProductsByCatID(this.selectedCategory)
-    // else
-    //   return this.prdService.getAllProducts();
-    if (this.selectedCategory != 0)
-      return this.prdService.getProductsByCatID(this.selectedCategory);
-    else return this.prdService.getAllProducts();
-  }
-
-  getCategory() {
-    return this.prdService.getCategory();
-  }
-  viewProduct(prdID:number):void{
-    // this.router.navigate(['/Products/',prdID]);
-    this.router.navigateByUrl('/Products/' + prdID);
-    console.log(prdID);
-  }
-  addData() {}
-  removeData() {}
-  goToPrdDetails() {}
+  addData() { }
+  removeData() { }
+  goToPrdDetails() { }
 }
+

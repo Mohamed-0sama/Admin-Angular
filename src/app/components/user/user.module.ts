@@ -37,6 +37,7 @@ import { SellersComponent } from './user-account/main-section/sellers/sellers.co
 import { CardDashboardComponent } from './user-account/main-section/dashboard/card-dashboard/card-dashboard.component';
 import { ProductDetailsComponent } from './user-account/main-section/product-details/product-details.component';
 import { HttpClientModule } from '@angular/common/http';
+import { CustomerDetailsComponent } from './user-account/main-section/customer-details/customer-details.component';
 // import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 const routes : Routes =[
   {path: 'Account', component: UserAccountComponent,
@@ -47,6 +48,7 @@ children:[
   {path: 'noonCredits', component: NoonCreditsComponent},
   {path: 'Returns', component: ReturnsComponent},
   {path: 'Customers', component: CustomersComponent},
+  {path: 'Customers/:id', component: CustomerDetailsComponent},
   {path: 'Preferences', component: PreferencesComponent},
   {path: 'Products', component: ProductsComponent},
   {path: 'Profile', component: ProfileComponent},
@@ -73,7 +75,8 @@ children:[
     CustomersComponent,
     SellersComponent,
     CardDashboardComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    CustomerDetailsComponent
   ],
   imports: [
     CommonModule,
