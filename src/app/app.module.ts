@@ -13,7 +13,8 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import { HighchartsChartModule } from 'highcharts-angular';
 import { HttpClientModule } from '@angular/common/http';
 import {MatTableModule} from '@angular/material/table';
-
+// import {MatPaginator} from '@angular/material/paginator';
+// import {MatTableDataSource} from '@angular/material/table';
 
 
 @NgModule({
@@ -33,7 +34,9 @@ import {MatTableModule} from '@angular/material/table';
     HighchartsChartModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MatTableModule
+    MatTableModule,
+    // MatPaginator,
+    // MatTableDataSource
 
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA ],
