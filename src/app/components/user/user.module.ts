@@ -6,7 +6,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatIconModule} from '@angular/material/icon';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // import { AppRoutingModule } from './app-routing.module';
-
+import {MatTableModule} from '@angular/material/table';
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import { UserAccountComponent } from './user-account/user-account.component';
@@ -87,6 +87,7 @@ children:[
     MatIconModule,
     HttpClientModule,
     ReactiveFormsModule,
+    MatTableModule
 
 
     ],
