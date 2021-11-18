@@ -5,6 +5,9 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatIconModule} from '@angular/material/icon';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MatTableModule} from '@angular/material/table';
+import { DataTablesModule } from 'angular-datatables';
+
 // import { AppRoutingModule } from './app-routing.module';
 
 import {MatCardModule} from '@angular/material/card';
@@ -14,7 +17,6 @@ import { UserAccountHeaderComponent } from './user-account/user-account-header/u
 import { UserAccountFooterComponent } from './user-account/user-account-footer/user-account-footer.component';
 import { UserAccountAsideComponent } from './user-account/user-account-aside/user-account-aside.component';
 import { UserAccountMainComponent } from './user-account/user-account-main/user-account-main.component';
-import { OrderComponent } from './user-account/main-section/order/order.component';
 import { PaymentsComponent } from './user-account/main-section/payments/payments.component';
 import { NoonCreditsComponent } from './user-account/main-section/noon-credits/noon-credits.component';
 import { ReturnsComponent } from './user-account/main-section/returns/returns.component';
@@ -36,20 +38,30 @@ import { ProductDetailsComponent } from './user-account/main-section/product-det
 import { HttpClientModule } from '@angular/common/http';
 import { AuthLayoutComponent } from './auth-layout/auth-layout.component';
 import { UserAuthGuard } from './user-auth.guard';
+import { CustomerDetailsComponent } from './user-account/main-section/customer-details/customer-details.component';
+import { OrderDetailsComponent } from './user-account/main-section/order-details/order-details.component';
+import { OrdersComponent } from './user-account/main-section/orders/orders.component';
+import { InsertProductComponent } from './user-account/main-section/insert-product/insert-product.component';
+import { AddUsersComponent } from './user-account/main-section/add-users/add-users.component';
 // import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 const routes : Routes =[
   {path: 'Account', component: UserAccountComponent,canActivate:[UserAuthGuard],
 children:[
-  {path: 'Orders', component: OrderComponent},
   {path: 'Dashboard', component: DashboardComponent},
   {path: 'Payments', component: PaymentsComponent},
   {path: 'noonCredits', component: NoonCreditsComponent},
   {path: 'Returns', component: ReturnsComponent},
   {path: 'Customers', component: CustomersComponent},
+  {path: 'AddCustomers', component: AddUsersComponent},
+  {path: 'Customers/:id', component: CustomerDetailsComponent},
   {path: 'Preferences', component: PreferencesComponent},
   {path: 'Products', component: ProductsComponent},
-  {path: 'Profile', component: ProfileComponent},
+  {path: 'AddProducts', component: InsertProductComponent},
   {path: 'Products/:id', component: ProductDetailsComponent },
+  {path: 'Orders', component: OrdersComponent},
+  {path: 'Orders/:id', component: OrderDetailsComponent },
+  {path: 'Profile', component: ProfileComponent},
+
   // { path: 'Products/:id/:totalProducts', component: ProductDetailsComponent },
 ]},
 {
@@ -76,7 +88,12 @@ children:[
     SellersComponent,
     CardDashboardComponent,
     ProductDetailsComponent,
-    AuthLayoutComponent
+    AuthLayoutComponent,
+    CustomerDetailsComponent,
+    OrderDetailsComponent,
+    OrdersComponent,
+    InsertProductComponent,
+    AddUsersComponent
   ],
   imports: [
     CommonModule,
@@ -93,7 +110,8 @@ children:[
     MatIconModule,
     HttpClientModule,
     ReactiveFormsModule,
-
+    MatTableModule,
+    DataTablesModule
 
     ],
     schemas: [ CUSTOM_ELEMENTS_SCHEMA , NO_ERRORS_SCHEMA]
