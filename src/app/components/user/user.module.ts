@@ -39,6 +39,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { CustomerDetailsComponent } from './user-account/main-section/customer-details/customer-details.component';
 import { OrderDetailsComponent } from './user-account/main-section/order-details/order-details.component';
 import { OrdersComponent } from './user-account/main-section/orders/orders.component';
+import { InsertProductComponent } from './user-account/main-section/insert-product/insert-product.component';
+import { AddUsersComponent } from './user-account/main-section/add-users/add-users.component';
 // import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 const routes : Routes =[
   {path: 'Account', component: UserAccountComponent,
@@ -48,13 +50,16 @@ children:[
   {path: 'noonCredits', component: NoonCreditsComponent},
   {path: 'Returns', component: ReturnsComponent},
   {path: 'Customers', component: CustomersComponent},
+  {path: 'AddCustomers', component: AddUsersComponent},
   {path: 'Customers/:id', component: CustomerDetailsComponent},
   {path: 'Preferences', component: PreferencesComponent},
   {path: 'Products', component: ProductsComponent},
+  {path: 'AddProducts', component: InsertProductComponent},
   {path: 'Products/:id', component: ProductDetailsComponent },
   {path: 'Orders', component: OrdersComponent},
   {path: 'Orders/:id', component: OrderDetailsComponent },
   {path: 'Profile', component: ProfileComponent},
+
   // { path: 'Products/:id/:totalProducts', component: ProductDetailsComponent },
 ]},
   {path: '', redirectTo: '/User/Account/Orders', pathMatch: 'full'},
@@ -80,7 +85,9 @@ children:[
     ProductDetailsComponent,
     CustomerDetailsComponent,
     OrderDetailsComponent,
-    OrdersComponent
+    OrdersComponent,
+    InsertProductComponent,
+    AddUsersComponent
   ],
   imports: [
     CommonModule,

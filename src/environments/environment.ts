@@ -4,8 +4,9 @@
 
 export const environment = {
   production: false,
-  APIURL:'http://localhost:5000/api',
-  ImagesURL:'http://localhost:5000/images/',
+  APIURL:'https://noon-ecommerce.herokuapp.com/api',
+  ImagesURL:'https://noon-ecommerce.herokuapp.com/images/',
+  
 };
 
 /*
