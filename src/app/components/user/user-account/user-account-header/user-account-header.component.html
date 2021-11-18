@@ -1,28 +1,19 @@
 <nav class="navbar navbar-expand-sm navbar-light position-sm-static p-1 first__navbar">
   <div class="container-fluid">
-    <!-- <button > -->
-      <i class="bi bi-arrow-down-left-square-fill" (click)="toogleSideBar()"></i>
-    <!-- </button> -->
-    <a class="navbar-brand d-block d-sm-none" href="#"><img src="../../../../../assets/header/noon-black-en.svg" alt="noon"
-      /></a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
+    <!-- <button (click)="logOut()" type="button" class="btn btn-dark mx-2">Logout</button> -->
+    <i (click)="toogleSideBar()" class="bi bi-arrow-left-right btn"></i>
+    <a class="navbar-brand d-block d-sm-none" href="#"><img src="../../../../../assets/header/noon-black-en.svg"
+        alt="noon" /></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
       <ul class="navbar-nav me-auto ">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#"
-            ><img src="../../../../../assets/header/noon-black-en.svg" alt="noon"
-          /></a>
+          <a class="nav-link active" aria-current="page" href="#"><img
+              src="../../../../../assets/header/noon-black-en.svg" alt="noon" /></a>
         </li>
         <!-- <li class="nav-item">
           <a class="nav-link d-flex" href="#">
@@ -41,12 +32,8 @@
         <!-- ////////// search  ////////////-->
         <li class="header__li__search">
           <!-- <form class="d-flex"> -->
-          <input
-            class="header__search me-2 	"
-            type="search"
-            aria-label="Search"
-            placeholder="What are you looking for?"
-          />
+          <input class="header__search me-2 	" type="search" aria-label="Search"
+            placeholder="What are you looking for?" />
           <!-- <i class="bi bi-search d-block d-md-none" ></i> -->
           <!-- </form> -->
         </li>
@@ -58,17 +45,13 @@
         <li class="nav-item sign-in">
           <a class="nav-link" href="#">
             <!-- <span>Sign In</span> -->
-            <img
-              src="../../../../../assets/header/home.svg"
-              alt="home"
-              style="width: 25px"
-            />
+            <img src="../../../../../assets/header/home.svg" alt="home" style="width: 25px" />
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">
             <!-- <span>Cart</span> -->
-            <img src="../../../../../assets/header/cart.svg" alt="cart" style="width: 25px"/>
+            <img src="../../../../../assets/header/cart.svg" alt="cart" style="width: 25px" />
           </a>
         </li>
       </ul>

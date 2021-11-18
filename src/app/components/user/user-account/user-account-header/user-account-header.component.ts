@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { UserAuthService } from 'src/app/services/user-auth.service';
 
 @Component({
   selector: 'app-user-account-header',
@@ -7,11 +8,14 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 export class UserAccountHeaderComponent implements OnInit {
   @Output() toogleSideBarEvent : EventEmitter<any> = new EventEmitter();
-  constructor() { }
+  constructor(private userAuthService:UserAuthService) { }
 
   ngOnInit(): void {
   }
   toogleSideBar(){
     this.toogleSideBarEvent.emit();
+  }
+  logOut(){
+    this.userAuthService.logout();
   }
 }

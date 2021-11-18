@@ -1,14 +1,8 @@
-<app-user-account-header
-  (toogleSideBarEvent)="toogleAside()"
-></app-user-account-header>
+<app-user-account-header (toogleSideBarEvent)="toogleAside()"></app-user-account-header>
 <div class="container-fluid cont1">
   <div class="row specialMarAndPad">
     <mat-drawer-container>
-      <mat-drawer
-        mode="side"
-        [opened]="isOpen"
-        class="col-md-4 col-lg-3 col-xxl-2"
-      >
+      <mat-drawer mode="side" [opened]="isOpen" class="col-md-4 col-lg-3 col-xxl-2">
         <app-user-account-aside></app-user-account-aside>
       </mat-drawer>
 
