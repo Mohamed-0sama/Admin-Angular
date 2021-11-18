@@ -17,7 +17,6 @@ import { UserAccountHeaderComponent } from './user-account/user-account-header/u
 import { UserAccountFooterComponent } from './user-account/user-account-footer/user-account-footer.component';
 import { UserAccountAsideComponent } from './user-account/user-account-aside/user-account-aside.component';
 import { UserAccountMainComponent } from './user-account/user-account-main/user-account-main.component';
-import { OrderComponent } from './user-account/main-section/order/order.component';
 import { PaymentsComponent } from './user-account/main-section/payments/payments.component';
 import { NoonCreditsComponent } from './user-account/main-section/noon-credits/noon-credits.component';
 import { ReturnsComponent } from './user-account/main-section/returns/returns.component';
@@ -38,11 +37,12 @@ import { CardDashboardComponent } from './user-account/main-section/dashboard/ca
 import { ProductDetailsComponent } from './user-account/main-section/product-details/product-details.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CustomerDetailsComponent } from './user-account/main-section/customer-details/customer-details.component';
+import { OrderDetailsComponent } from './user-account/main-section/order-details/order-details.component';
+import { OrdersComponent } from './user-account/main-section/orders/orders.component';
 // import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 const routes : Routes =[
   {path: 'Account', component: UserAccountComponent,
 children:[
-  {path: 'Orders', component: OrderComponent},
   {path: 'Dashboard', component: DashboardComponent},
   {path: 'Payments', component: PaymentsComponent},
   {path: 'noonCredits', component: NoonCreditsComponent},
@@ -51,8 +51,10 @@ children:[
   {path: 'Customers/:id', component: CustomerDetailsComponent},
   {path: 'Preferences', component: PreferencesComponent},
   {path: 'Products', component: ProductsComponent},
-  {path: 'Profile', component: ProfileComponent},
   {path: 'Products/:id', component: ProductDetailsComponent },
+  {path: 'Orders', component: OrdersComponent},
+  {path: 'Orders/:id', component: OrderDetailsComponent },
+  {path: 'Profile', component: ProfileComponent},
   // { path: 'Products/:id/:totalProducts', component: ProductDetailsComponent },
 ]},
   {path: '', redirectTo: '/User/Account/Orders', pathMatch: 'full'},
@@ -76,7 +78,9 @@ children:[
     SellersComponent,
     CardDashboardComponent,
     ProductDetailsComponent,
-    CustomerDetailsComponent
+    CustomerDetailsComponent,
+    OrderDetailsComponent,
+    OrdersComponent
   ],
   imports: [
     CommonModule,
