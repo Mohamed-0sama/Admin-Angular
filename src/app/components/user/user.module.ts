@@ -7,7 +7,9 @@ import {MatIconModule} from '@angular/material/icon';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatTableModule} from '@angular/material/table';
 import { DataTablesModule } from 'angular-datatables';
-
+// import {MatTableDataSource} from '@angular/material/table';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 // import { AppRoutingModule } from './app-routing.module';
 
 import {MatCardModule} from '@angular/material/card';
@@ -73,7 +75,8 @@ children:[
     CustomersComponent,
     SellersComponent,
     CardDashboardComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    OrderComponent
   ],
   imports: [
     CommonModule,
@@ -91,7 +94,11 @@ children:[
     HttpClientModule,
     ReactiveFormsModule,
     MatTableModule,
-    DataTablesModule
+    DataTablesModule,
+    MatFormFieldModule,
+    MatInputModule,
+
+    // AppRoutingModule
 
     ],
     schemas: [ CUSTOM_ELEMENTS_SCHEMA , NO_ERRORS_SCHEMA]
