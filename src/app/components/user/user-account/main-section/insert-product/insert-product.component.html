@@ -49,10 +49,10 @@
         <input type="file"  name="image" accept=".jpg, .jpeg, .png" class="form-control" id="inputImage" (change)="upload($event)"  >
     </div>
    
-    <div class="col-md-2">
+    <!-- <div class="col-md-2">
       <label for="inputZip" class="form-label">Product ID</label>
       <input type="number" name="ProductID" class="form-control" id="inputID" formControlName="id" required>
-    </div>
+    </div> -->
    
     <div class="col-12">
       <button type="submit" class="btn btn-primary" [disabled]="!myForm.valid" (click)=addProduct(myForm.value)> Add Product</button>

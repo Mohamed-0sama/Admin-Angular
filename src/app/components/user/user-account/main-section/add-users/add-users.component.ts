@@ -12,13 +12,15 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class AddUsersComponent implements OnInit {
   myForm2: FormGroup;
-  private subscriptionsAdmin:Subscription[]=[];
+  newURL:String='';
+    private subscriptionsAdmin:Subscription[]=[];
   constructor(private fb: FormBuilder,private fb2:FormBuilder, private AddUsersServ:UsersServiceService,private router:ActivatedRoute) {
 
     this.myForm2=this.fb.group({
       username:['',[Validators.required,Validators.minLength(10)]],
       email:['',[Validators.required,Validators.minLength(10),Validators.maxLength(40),Validators.email]],
-      password:['',[Validators.required,Validators.maxLength(20),Validators.minLength(6)]]
+      password:['',[Validators.required,Validators.maxLength(20),Validators.minLength(6)]],
+      imageSrc:['']
     })
     
    }
@@ -38,6 +40,19 @@ export class AddUsersComponent implements OnInit {
          },(err)=>{alert(`the name ${user.email}, is used`)}
          ))
    }
+   upload(event:any){
+    var file= event.target.files[0];
+    this.newURL=file.name;
+    console.log(file.name);
+    console.log("newURl",this.newURL)
+    this.myForm2.controls['imageSrc'].patchValue(this.newURL);
+    console.log("image name",this.myForm2.controls['imageSrc'].value);
+      this.AddUsersServ.uploadimage(file).subscribe((d)=>{
+      console.log("New file",d);
+    },error=>{console.error(error);
+    });
+   }
+
 
    updateUser(u:UserAPI){
      this.AddUsersServ.updateUser(u).subscribe(newupdated=>{
