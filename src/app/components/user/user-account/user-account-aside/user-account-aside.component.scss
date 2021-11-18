@@ -1,18 +1,22 @@
 .Ahlan {
+
   // padding: 12px 15px;
   p {
     font-size: large;
   }
+
   button {
-    margin-top: 0 ;
+    margin-top: 0;
     padding: 0;
     font-size: smaller;
     box-shadow: none;
   }
-  hr {
-  }
+
+  hr {}
 }
+
 nav {
+
   // background-color: aqua;
   .asideDiv {
     ul {
@@ -20,24 +24,28 @@ nav {
         padding: 12px 15px;
         border-radius: 5px;
         cursor: pointer;
-        a  {
+
+        a {
           display: flex;
           align-items: center;
           color: rgb(126, 133, 155);
+
           span {
             padding-right: 10px;
-            img {
-            }
+
+            img {}
           }
         }
       }
-      li:hover  {
+
+      li:hover {
         box-shadow: rgb(173 193 207 / 25%) 0px 2px 10px 0px;
         background: rgb(255, 255, 255);
         cursor: pointer;
         border-bottom: 1px solid rgb(241, 243, 249);
         font-size: 1.0769em;
         font-weight: 600;
+
         a {
           color: #404553;
 
@@ -46,14 +54,17 @@ nav {
     }
   }
 }
+
 // li>a[routerLinkActive="router-link-active"].router-link-active{
-  .router-link-active{
+.router-link-active {
   // padding: 12px 15px;
   // box-shadow: rgb(173 193 207 / 25%) 0px 2px 10px 0px;
-        background: rgb(255, 255, 255);
-        // cursor: pointer;
-        // border-bottom: 1px solid rgb(241, 243, 249);
-        font-size: 1.0769em;
-        font-weight: 600;
-        color: #404553;
+  background: rgb(255, 255, 255);
+  // cursor: pointer;
+  // border-bottom: 1px solid rgb(241, 243, 249);
+  font-size: 1.0769em;
+  font-weight: 600;
+
+
+  color: #404553 !important;
 }

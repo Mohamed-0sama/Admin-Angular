@@ -34,9 +34,11 @@ import { SellersComponent } from './user-account/main-section/sellers/sellers.co
 import { CardDashboardComponent } from './user-account/main-section/dashboard/card-dashboard/card-dashboard.component';
 import { ProductDetailsComponent } from './user-account/main-section/product-details/product-details.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AuthLayoutComponent } from './auth-layout/auth-layout.component';
+import { UserAuthGuard } from './user-auth.guard';
 // import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 const routes : Routes =[
-  {path: 'Account', component: UserAccountComponent,
+  {path: 'Account', component: UserAccountComponent,canActivate:[UserAuthGuard],
 children:[
   {path: 'Orders', component: OrderComponent},
   {path: 'Dashboard', component: DashboardComponent},
@@ -50,7 +52,10 @@ children:[
   {path: 'Products/:id', component: ProductDetailsComponent },
   // { path: 'Products/:id/:totalProducts', component: ProductDetailsComponent },
 ]},
-  {path: '', redirectTo: '/User/Account/Orders', pathMatch: 'full'},
+{
+  path: 'auth',component : AuthLayoutComponent
+},
+  {path: '', redirectTo: '/admin/Account/Dashboard', pathMatch: 'full'},
 ]
 
 @NgModule({
@@ -70,7 +75,8 @@ children:[
     CustomersComponent,
     SellersComponent,
     CardDashboardComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    AuthLayoutComponent
   ],
   imports: [
     CommonModule,
