@@ -11,11 +11,12 @@ export class ProductsFromAPIService {
 
   private httpOptions={};
   constructor(private httpClient: HttpClient) {
-    this.httpOptions={
+    localStorage.setItem('AccessToken','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxOGViNGE1ZTRlMjZlN2Y2MjVjYTIyNiIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYzNzAyMzczNiwiZXhwIjoxNjM3MjgyOTM2fQ.rErePjoBJpU2FrU1-_21ZTZubV0CurzFRFr4PNJ4HYM')
+    this.httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
-        //, 'Authorization':localStorage.get('AccessToken')
-      })
+      , 'token':/*this.accessTokenForAdmin*/localStorage['AccessToken']
+      })//.set('token', localStorage.AccessToken)
     }
   }
 
@@ -35,6 +36,11 @@ export class ProductsFromAPIService {
  {
    return this.httpClient.get<ProductAPI[]>(environment.APIURL + '/products?category=' +cName);
  }
+ deleteProductByID(pID: string):Observable<ProductAPI>
+ {
+   return this.httpClient.delete<ProductAPI>(environment.APIURL + '/products/delete/' +pID,this.httpOptions);
+ }
+
 /*
  insertProduct(newPrd: ProductAPI):Observable<any>
  {

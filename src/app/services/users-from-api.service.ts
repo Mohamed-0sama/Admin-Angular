@@ -37,6 +37,10 @@ getUserStats(): Observable <UserStats>
 {
   return this.httpClient.get<UserStats>(environment.APIURL + '/users/stats',this.httpOptions);
 }
+deleteUserByID(uID: string): Observable <UserAPI >
+{
+  return this.httpClient.delete<UserAPI>(environment.APIURL + '/users/delete/' + uID,this.httpOptions);
+}
 /*
  insertProduct(newPrd: ProductAPI):Observable<any>
  {

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserAuthService } from 'src/app/services/user-auth.service';
 
 @Component({
   selector: 'app-user-account-aside',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserAccountAsideComponent implements OnInit {
 
-  constructor() { }
+  constructor(private userAuthService:UserAuthService) { }
 
   ngOnInit(): void {
+  }
+  logOut(){
+    this.userAuthService.logout();
   }
 
 }

@@ -1,4 +1,4 @@
-import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { AfterViewInit, Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ProductsFromAPIService } from 'src/app/services/products-from-api.service';
@@ -11,7 +11,7 @@ import { environment } from 'src/environments/environment';
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss'],
 })
-export class ProductsComponent implements OnInit {
+export class ProductsComponent implements OnInit,OnChanges {
   // @ViewChild(MatTable) table: MatTable<PeriodicElement>
   subscription!: Subscription[]
   imgHoverColor: string = 'green';
@@ -29,6 +29,9 @@ export class ProductsComponent implements OnInit {
   constructor(private prdSerAPI: ProductsFromAPIService, private router: Router) {
 
   }
+
+  ngOnChanges(changes: SimpleChanges): void {
+}
 
 
   ngOnInit(): void {
@@ -77,7 +80,24 @@ export class ProductsComponent implements OnInit {
       });
   }
   addData() { }
-  removeData() { }
+  removeData(){}
+  deleteProduct(prdId:string) {
+    alert("Are you sure to delete this product")
+    this.prdSerAPI.deleteProductByID(prdId).subscribe(
+      (prd=>{console.log(prd)
+        this.prdSerAPI.getAllProducts()
+        .subscribe(productList => {
+          this.ProductList = productList;
+          //console.log(this.ProductList)
+        },
+          err => {
+            console.log(err);
+          });
+      })
+      ,(err=>console.log(err))
+    )
+    
+   }
   goToPrdDetails() { }
 }
 

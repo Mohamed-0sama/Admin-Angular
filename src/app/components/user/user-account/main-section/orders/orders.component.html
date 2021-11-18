@@ -45,7 +45,7 @@
               </ul>
             </td>
             <td>{{ order.amount }}</td>
-            <td>{{ order.status }}</td>
+            <td [ngStyle]="{'color': order.status==='pending'?'darkred':'green'}">{{ order.status }}</td>
           </tr>
         </tbody>
       </table>

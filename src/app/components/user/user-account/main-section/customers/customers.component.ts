@@ -44,4 +44,21 @@ export class CustomersComponent implements OnInit{
         console.log(err);
       });
   }
+  deleteUser(usrId:any) {
+    alert("Are you sure to delete this user")
+    this.userSerAPI.deleteUserByID(usrId).subscribe(
+      (usr=>{console.log(usr)
+        this.userSerAPI.getAllUsers()
+        .subscribe(usersList => {
+          this.UserList = usersList;
+          //console.log(this.UserList)
+        },
+          err => {
+            console.log(err);
+          });
+      })
+      ,(err=>console.log(err))
+    )
+    
+   }
 }
