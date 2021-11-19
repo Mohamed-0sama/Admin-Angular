@@ -12,11 +12,11 @@ export class UsersFromApiService {
   private httpOptions = {};
   //private accessTokenForAdmin:string = ""
   constructor(private httpClient: HttpClient) {
-    localStorage.setItem('AccessToken','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxOGViNGE1ZTRlMjZlN2Y2MjVjYTIyNiIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYzNzAyMzczNiwiZXhwIjoxNjM3MjgyOTM2fQ.rErePjoBJpU2FrU1-_21ZTZubV0CurzFRFr4PNJ4HYM')
+    // localStorage.setItem('AccessToken','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxOGViNGE1ZTRlMjZlN2Y2MjVjYTIyNiIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYzNzAyMzczNiwiZXhwIjoxNjM3MjgyOTM2fQ.rErePjoBJpU2FrU1-_21ZTZubV0CurzFRFr4PNJ4HYM')
     this.httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
-      , 'token':/*this.accessTokenForAdmin*/localStorage['AccessToken']
+      , 'token':/*this.accessTokenForAdmin*/localStorage['adminToken']
       })//.set('token', localStorage.AccessToken)
     }
 }
