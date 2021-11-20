@@ -15,7 +15,7 @@ export class ProductsFromAPIService {
     this.httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
-      , 'token':/*this.accessTokenForAdmin*/localStorage['AccessToken']
+      , 'token':/*this.accessTokenForAdmin*/localStorage['adminToken']
       })//.set('token', localStorage.AccessToken)
     }
   }
