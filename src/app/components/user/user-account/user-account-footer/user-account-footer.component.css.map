@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,MAAM,CACN;EACE,SAAS,EAAE,IAAI;CAIhB;;AAND,AAGE,MAHI,CAGJ,GAAG,CAAA;EACD,OAAO,EAAE,SACX;CAAC",
+    "sources": [
+        "user-account-footer.component.scss"
+    ],
+    "names": [],
+    "file": "user-account-footer.component.css"
+}

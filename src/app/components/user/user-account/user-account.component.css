@@ -1,0 +1,16 @@
+.container-fluid .row {
+  background-color: #f7f7fa;
+}
+
+.cont1 {
+  padding: 0 35px;
+}
+
+.specialMarAndPad {
+  padding: 15px;
+}
+
+.drawerContent {
+  min-height: 70vh;
+}
+/*# sourceMappingURL=user-account.component.css.map */

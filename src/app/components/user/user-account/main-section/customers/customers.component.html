@@ -1,7 +1,7 @@
 <div class="container">
-  <div class="card m-5 p-3">
-    <div class="card-body">
-      <table class="table table-bordered table-striped table-hover" datatable [dtOptions]="dtOptions"
+  <!-- <div class="card"> -->
+    <!-- <div class="card-body"> -->
+      <table class="table table-bordered table-striped table-hover d-none d-md-block" datatable [dtOptions]="dtOptions"
         [dtTrigger]="dtTrigger">
         <thead>
           <tr>
@@ -32,5 +32,29 @@
       </table>
     </div>
 
-  </div>
-</div>
+  <!-- </div> -->
+<!-- </div> -->
+
+
+<!-- cards in small devices -->
+<ul class="d-block d-md-none ul__product">
+  <li *ngFor="let user of UserList; let i=index" class="">
+    <div class="card list__product" style="width: 18rem;">
+      <img src="{{ImagesUrl}}{{user.imageSrc}}" alt="" width="200px" height="200px">
+      <div class="card-body">
+        <h5 class="card-title">{{user.username}}</h5>
+        <p class="card-text">{{user.email}}</p>
+      </div>
+      <!-- <ul class="list-group list-group-flush">
+        <li class="list-group-item">An item</li>
+        <li class="list-group-item">A second item</li>
+        <li class="list-group-item">A third item</li>
+      </ul> -->
+      <div class="card-body">
+        <a class="btn btn-primary mx-1" routerLink="//admin/Account/Customers/{{user._id}}" role="button">View</a>
+        <a class="btn btn-primary mx-1" (click)="deleteUser(user._id)" role="button">Delete</a>
+      </div>
+    </div>
+  </li>
+</ul>
+
