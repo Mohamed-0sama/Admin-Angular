@@ -1,7 +1,7 @@
 <form class="row g-3" [formGroup]="myForm">
-    <div class="col-12">
+    <!-- <div class="col-12">
         Value:{{ myForm.value| json }}
-</div>
+</div> -->
 
     <div class="col-md-6">
         <label for="inputState" class="form-label">Category</label>
@@ -12,7 +12,7 @@
             <option >Laptops</option>
       </select>
     </div>
-    
+
     <div class="col-12">
       <label for="Name" class="form-label">Product Name</label>
       <input type="text" name="Productname" class="form-control" id="inputName" placeholder="XXX Device" formControlName="title" required>
@@ -27,7 +27,7 @@
         <div class="alert alert-success col-6 " role="alert" [hidden]="!myForm.controls['desc'].valid">
           Valid description Criteria
         </div>
-      </div> 
+      </div>
 
     <div class="col-12">
       <label for="inputAddress2" class="form-label">Price</label>
@@ -48,14 +48,14 @@
         <label for="imageinput" class="form-label">Image </label>
         <input type="file"  name="image" accept=".jpg, .jpeg, .png" class="form-control" id="inputImage" (change)="upload($event)"  >
     </div>
-   
+
     <!-- <div class="col-md-2">
       <label for="inputZip" class="form-label">Product ID</label>
       <input type="number" name="ProductID" class="form-control" id="inputID" formControlName="id" required>
     </div> -->
-   
+
     <div class="col-12">
       <button type="submit" class="btn btn-primary" [disabled]="!myForm.valid" (click)=addProduct(myForm.value)> Add Product</button>
     </div>
-    
+
   </form>

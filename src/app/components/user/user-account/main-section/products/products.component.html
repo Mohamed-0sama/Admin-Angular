@@ -2,11 +2,16 @@
 
 <div class="mb-3">
   <label for="" class="form-label">Select Category:</label>
-  <select name="cat" id="catDDL" class="form-select" [(ngModel)]="selectedCat" #selectItem
-    (change)="showProducts(selectItem.value)">
-
+  <select
+    name="cat"
+    id="catDDL"
+    class="form-select"
+    [(ngModel)]="selectedCat"
+    #selectItem
+    (change)="showProducts(selectItem.value)"
+  >
     <option value="">All</option>
-    <option *ngFor="let cat of StaticCat" [value]="cat">{{cat}}</option>
+    <option *ngFor="let cat of StaticCat" [value]="cat">{{ cat }}</option>
   </select>
 </div>
 <hr />
@@ -14,10 +19,15 @@
 <button mat-flat-button color="accent" (click)="addData()" class="demo-button">
   Add data
 </button>
-<button mat-flat-button color="warn" (click)="removeData()" class="demo-button m-2">
+<button
+  mat-flat-button
+  color="warn"
+  (click)="removeData()"
+  class="demo-button m-2"
+>
   Remove data
 </button>
-<table class="table table-hover table-striped">
+<!-- <table class="table table-hover table-striped">
   <thead>
     <tr>
       <th>No.</th>
@@ -59,35 +69,94 @@
       </td>
     </tr>
   </tbody>
-</table>
+</table> -->
 
-<!--
-<button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon button with a vertical three dot icon">
-  <mat-icon>more_vert</mat-icon>
- </button> -->
-<!-- </button>
-<mat-menu #menu="matMenu" yPosition="below">
-<button mat-menu-item>view</button>
-<button mat-menu-item>edit</button>
-<button mat-menu-item>delete</button>
-</mat-menu> -->
+<!-- dddddddddddddddddddddddddddddddddddddddd -->
 
-<!-- <button mat-icon-button [matMenuTriggerFor]="menu1" aria-label="Example icon-button with a menu">
-  <mat-icon>more_vert</mat-icon>
-</button>
- -->
 
-<!-- <mat-menu #menu1="matMenu">
-  <button mat-menu-item>
-    <mat-icon>dialpad</mat-icon>
-    <span>Redial</span>
-  </button>
-  <button mat-menu-item disabled>
-    <mat-icon>voicemail</mat-icon>
-    <span>Check voice mail</span>
-  </button>
-  <button mat-menu-item>
-    <mat-icon>notifications_off</mat-icon>
-    <span>Disable alerts</span>
-  </button>
-</mat-menu> -->
+<ul class="ul__product">
+  <li *ngFor="let prd of ProductList; let i = index" [ngSwitch]="prd.quantity">
+    <div class="card list__product">
+      <h2 class="card-title pt-2">{{ prd?.title | uppercase }}</h2>
+      <img src="{{ ImagesUrl }}{{ prd.imageSrc }}"
+      width="200px"
+      height="200px"
+      alt="Photo of a Shiba Inu">
+      <div class="card-body">
+
+        <p class="card-text">{{ prd.desc }}</p>
+        <p class="card-text">{{
+          prd.price | currency: "EGP":"symbol"
+        }}</p>
+
+        <div class="d-flex justify-content-center flex-width align-items-center">
+          <a
+          class="btn btn-primary mx-1"
+          routerLink="//admin/Account/Products/{{ prd._id }}"
+          role="button"
+          >View</a
+        >
+        <a
+          class="btn btn-primary mx-1"
+          (click)="deleteProduct(prd._id)"
+          role="button"
+          >Delete</a
+        >
+        </div>
+        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+      </div>
+    </div>
+  </li>
+</ul>
+
+
+
+
+
+
+<!-- <ul class="ul__product">
+  <li *ngFor="let prd of ProductList; let i = index" [ngSwitch]="prd.quantity">
+    <mat-card class="example-card list__product">
+      <mat-card-header>
+
+        <mat-card-title
+          [ngClass]="{
+            'text-danger': prd.quantity == 0,
+            'text-warning': prd.quantity == 1,
+            'text-primary': prd.quantity > 2
+          }"
+          >{{ prd?.title | uppercase }}</mat-card-title
+        >
+        <mat-card-subtitle>{{
+          prd.price | currency: "EGP":"symbol"
+        }}</mat-card-subtitle>
+      </mat-card-header>
+      <img
+        src="{{ ImagesUrl }}{{ prd.imageSrc }}"
+        width="200px"
+        height="200px"
+        alt="Photo of a Shiba Inu"
+      />
+      <mat-card-content>
+        <p>
+          {{ prd.desc }}
+        </p>
+      </mat-card-content>
+      <mat-card-actions class="d-flex justify-content-around w-75">
+        <a
+          class="btn btn-primary"
+          routerLink="//admin/Account/Products/{{ prd._id }}"
+          role="button"
+          >View</a
+        >
+        <a
+          class="btn btn-primary"
+          (click)="deleteProduct(prd._id)"
+          role="button"
+          >Delete</a
+        >
+      </mat-card-actions>
+    </mat-card>
+  </li>
+</ul> -->

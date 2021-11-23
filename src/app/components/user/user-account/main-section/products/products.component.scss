@@ -1,1 +1,25 @@
+.ul__product {
+  list-style: none;
+  // display: flex !important;
+  // flex-wrap: wrap;
+  // justify-content: space-evenly;
 
+  display: grid ;
+  grid-template-columns: repeat(auto-fill, minmax(200px,300px));
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+}
+.list__product {
+  margin: 5px;
+  // letter-spacing: wrap;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  // flex-direction: column;
+  width: 300px !important;
+  height: 400px !important;
+  // display: grid;
+  // grid-template-columns: repeat(auto-fit, min-max(200px,1fr));
+}

@@ -11,11 +11,11 @@ import { environment } from 'src/environments/environment';
 export class AddingProductsServiceService {
   private httpOptions={};
   constructor(private httpClient : HttpClient) {
-    localStorage.setItem('AccessToken','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxOGViNGE1ZTRlMjZlN2Y2MjVjYTIyNiIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYzNzAyMzczNiwiZXhwIjoxNjM3MjgyOTM2fQ.rErePjoBJpU2FrU1-_21ZTZubV0CurzFRFr4PNJ4HYM')
+    // localStorage.setItem('AccessToken','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxOGViNGE1ZTRlMjZlN2Y2MjVjYTIyNiIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYzNzAyMzczNiwiZXhwIjoxNjM3MjgyOTM2fQ.rErePjoBJpU2FrU1-_21ZTZubV0CurzFRFr4PNJ4HYM')
     this.httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
-      , 'token':/*this.accessTokenForAdmin*/localStorage['AccessToken']
+      , 'token':/*this.accessTokenForAdmin*/localStorage['adminToken']
       })//.set('token', localStorage.AccessToken)
     }
 
@@ -25,10 +25,15 @@ export class AddingProductsServiceService {
    return this.httpClient.get<Category[]>(`${environment.APIURL}/categories`)
   }
 
- 
+
   insertProduct(newPrd:ProductAPI):Observable<ProductAPI>{
     console.log("new added in Service",newPrd);
     return this.httpClient.post<ProductAPI>(`${environment.APIURL}/products`,newPrd,this.httpOptions)
+  }
+
+  editProduct(editPrd:ProductAPI, id: string):Observable<ProductAPI>{
+    console.log("edit product in Service",editPrd);
+    return this.httpClient.post<ProductAPI>(`${environment.APIURL}/products`,editPrd,this.httpOptions)
   }
 
   uploadimage(file:any){
@@ -41,7 +46,7 @@ export class AddingProductsServiceService {
   uploadImages(files:any){
    const formdata=new FormData();
    for(let index =0; index<files.length;index++)
-   { 
+   {
      const element= files[index];
      formdata.append('files',element);
    }

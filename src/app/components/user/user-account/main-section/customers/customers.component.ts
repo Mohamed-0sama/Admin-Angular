@@ -11,16 +11,16 @@ import {Subject} from 'rxjs';
   styleUrls: ['./customers.component.scss']
 })
 
-  
+
 export class CustomersComponent implements OnInit{
-  
+
   ImagesUrl: string = environment.ImagesURL;
   todayDate: Date = new Date();
   UserList: UserAPI[] = [];
   SelectedUser!: UserAPI;
   UserStats!: UserStats;
-  dtOptions: DataTables.Settings = {};
-  dtTrigger: Subject<any> = new Subject<any>();
+  // dtOptions: DataTables.Settings = {};
+  // dtTrigger: Subject<any> = new Subject<any>();
 
   constructor(private userSerAPI: UsersFromApiService) {
   }
@@ -59,6 +59,6 @@ export class CustomersComponent implements OnInit{
       })
       ,(err=>console.log(err))
     )
-    
+
    }
 }

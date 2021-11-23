@@ -2,11 +2,13 @@
 <div class="container-fluid cont1">
   <div class="row specialMarAndPad">
     <mat-drawer-container>
-      <mat-drawer mode="side" [opened]="isOpen" class="col-md-4 col-lg-3 col-xxl-2">
+      <mat-drawer [mode]="mode" [opened]="isOpen" class="col-md-4 col-lg-3 col-xxl-2">
+      <!-- <mat-drawer [mode]="mode" [opened]="isOpen" > -->
         <app-user-account-aside></app-user-account-aside>
       </mat-drawer>
 
       <mat-drawer-content class="col-md-8 col-lg-9 col-xxl-10 drawerContent p-3">
+      <!-- <mat-drawer-content class="drawerContent p-3"> -->
         <app-user-account-main></app-user-account-main>
       </mat-drawer-content>
     </mat-drawer-container>
