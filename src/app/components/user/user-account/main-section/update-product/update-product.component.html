@@ -1,5 +1,6 @@
 <form class="row g-3" [formGroup]="myForm">
 
+
   <div class="col-md-6">
     <label for="inputState" class="form-label">Category</label>
     <!-- <select id="inputState" name="CategoryList" class="form-select" [(ngModel)]=ProductCategory > -->
@@ -52,12 +53,14 @@
   </div>
 
   <!-- <div class="col-md-2">
-      <label for="inputZip" class="form-label">Product ID</label>
-      <input type="number" name="ProductID" class="form-control" id="inputID" formControlName="id" required>
-    </div> -->
+        <label for="inputZip" class="form-label">Product ID</label>
+        <input type="number" name="ProductID" class="form-control" id="inputID" formControlName="id" required>
+      </div> -->
 
   <div class="col-12">
-    <button type="submit" class="btn btn-primary" [disabled]="!myForm.valid" (click)=addProduct(myForm.value)> Add
+    <button type="submit" class="btn btn-primary" [disabled]="!myForm.valid"
+      (click)=editProduct(myForm.value,sentPrdID)>
+      Edit
       Product</button>
   </div>
 

@@ -43,6 +43,7 @@ import { OrderDetailsComponent } from './user-account/main-section/order-details
 import { OrdersComponent } from './user-account/main-section/orders/orders.component';
 import { InsertProductComponent } from './user-account/main-section/insert-product/insert-product.component';
 import { AddUsersComponent } from './user-account/main-section/add-users/add-users.component';
+import { UpdateProductComponent } from './user-account/main-section/update-product/update-product.component';
 // import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 const routes : Routes =[
   {path: 'Account', component: UserAccountComponent,canActivate:[UserAuthGuard],
@@ -58,6 +59,7 @@ children:[
   {path: 'Products', component: ProductsComponent},
   {path: 'AddProducts', component: InsertProductComponent},
   {path: 'Products/:id', component: ProductDetailsComponent },
+  {path: 'Products/edit/:id', component: UpdateProductComponent },
   {path: 'Orders', component: OrdersComponent},
   {path: 'Orders/:id', component: OrderDetailsComponent },
   {path: 'Profile', component: ProfileComponent},
@@ -93,7 +95,8 @@ children:[
     OrderDetailsComponent,
     OrdersComponent,
     InsertProductComponent,
-    AddUsersComponent
+    AddUsersComponent,
+    UpdateProductComponent
   ],
   imports: [
     CommonModule,

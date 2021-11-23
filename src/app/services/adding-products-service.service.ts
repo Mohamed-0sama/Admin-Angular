@@ -30,6 +30,10 @@ export class AddingProductsServiceService {
     console.log("new added in Service",newPrd);
     return this.httpClient.post<ProductAPI>(`${environment.APIURL}/products`,newPrd,this.httpOptions)
   }
+  editProduct(newPrd:ProductAPI,prdId:string):Observable<ProductAPI>{
+    console.log("update product in Service",newPrd,prdId);
+    return this.httpClient.put<ProductAPI>(`${environment.APIURL}/products/edit/${prdId}`,newPrd,this.httpOptions)
+  }
 
   uploadimage(file:any){
     const formdata=new FormData();

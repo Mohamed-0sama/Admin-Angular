@@ -13,6 +13,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import { HighchartsChartModule } from 'highcharts-angular';
 import { HttpClientModule } from '@angular/common/http';
 import {MatTableModule} from '@angular/material/table';
+import { UpdateProductComponent } from './update-product/update-product.component';
 // import {MatPaginator} from '@angular/material/paginator';
 // import {MatTableDataSource} from '@angular/material/table';
 
@@ -20,6 +21,7 @@ import {MatTableModule} from '@angular/material/table';
 @NgModule({
   declarations: [
     AppComponent,
+    UpdateProductComponent,
   ],
   imports: [
     FormsModule,
