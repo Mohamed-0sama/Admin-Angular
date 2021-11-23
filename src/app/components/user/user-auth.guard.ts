@@ -13,7 +13,7 @@ export class UserAuthGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     
-    if(this.userAuthService.isLoggedIn())
+    if(this.userAuthService.isLoggedIn()=="true")
     return true;
     else{
       this.router.navigate(['/admin/auth'])

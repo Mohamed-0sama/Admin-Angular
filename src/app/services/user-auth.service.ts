@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class UserAuthService {
-  public isLogged=false;
+  public isLogged:boolean=false;
   private token:any;
 
   constructor(private httpClient:HttpClient,private router:Router) { }
@@ -21,8 +21,9 @@ export class UserAuthService {
       console.log(res);
       if(res.isAdmin==true){
         this.token=res.accessToken;
-       localStorage.setItem('adminToken',this.token)
         this.isLogged=true;
+       localStorage.setItem('adminToken',this.token)
+       localStorage.setItem('adminIsLogged',this.isLogged.toString())
         this.router.navigate(['/admin/Account/Dashboard'])
       }
     }
@@ -35,11 +36,12 @@ export class UserAuthService {
   logout(){
     //call logout api and clear token
     localStorage.removeItem('adminToken')
+    localStorage.removeItem('adminIsLogged')
     this.isLogged=false;
     this.router.navigate(['/admin/auth'])
   }
-  isLoggedIn():Boolean{
+  isLoggedIn():any{
     console.log("hi",this.isLogged);
-    return this.isLogged;
+    return localStorage['adminIsLogged'];
   }
 }
