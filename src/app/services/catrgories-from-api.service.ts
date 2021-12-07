@@ -22,7 +22,7 @@ export class CatrgoriesFromApiService {
  getAllCategories():Observable<string[]>
  {
    // return this.httpClient.get<Product[]>(environment.APIURL + '/getproducts');
-   return this.httpClient.get<string[]>(/*environment.APIURL + */'http://localhost:5000/api/categories?category=all');
+   return this.httpClient.get<string[]>(environment.APIURL + '/categories?category=all');
 
  }
 }
