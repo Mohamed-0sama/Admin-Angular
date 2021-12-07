@@ -4,6 +4,7 @@ import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { ProductAPI } from 'src/app/models/product-api';
 import { Category } from 'src/app/models/category';
 import { Subscription } from 'rxjs';
+import { CatrgoriesFromApiService } from 'src/app/services/catrgories-from-api.service';
 
 @Component({
   selector: 'app-insert-product',
@@ -16,16 +17,17 @@ export class InsertProductComponent implements OnInit,OnChanges {
   nameths:String='';
   prd:ProductAPI={} as ProductAPI
   myForm: FormGroup;
-  catList:Category[]=[];
+  CatList:string[]=[];
+
   private subscriptionsAdmin:Subscription[]=[];
-  constructor(private fb: FormBuilder,private ProductInserteAPI:AddingProductsServiceService) {
+  constructor(private fb: FormBuilder,private ProductInserteAPI:AddingProductsServiceService,private catSerAPI: CatrgoriesFromApiService) {
 
     this.myForm=this.fb.group({
       id:Date.now(),
       title:['',[Validators.required,Validators.minLength(10)]],
       desc:['',[Validators.required,Validators.minLength(20),Validators.maxLength(150)]],
       price:['',[Validators.required,Validators.min(1)]],
-      quantity:['',[Validators.min(1),Validators.max(100)]],
+      quantity:['',[Validators.min(1),Validators.max(1000)]],
       imageSrc:[''],
       categories:['']
 
@@ -38,6 +40,16 @@ export class InsertProductComponent implements OnInit,OnChanges {
     //   this.catList=categoriesList;
     // })
     this.myForm.valueChanges.subscribe() 
+
+    this.catSerAPI.getAllCategories()
+    .subscribe(catList => {
+      this.CatList = catList;
+      //console.log("hamooooooooooo",this.CatList)
+    },
+      err => {
+        //console.log("erooooooor",this.CatList)
+        console.log(err);
+      });
   }
 
   ngOnChanges(changes: SimpleChanges): void {

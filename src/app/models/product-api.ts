@@ -4,6 +4,7 @@ export interface ProductAPI {
     desc: string;
     imageSrc: string;
     categories: [string];
+    category?: string;
     size: [string];
     quantity: number;
     price: number;

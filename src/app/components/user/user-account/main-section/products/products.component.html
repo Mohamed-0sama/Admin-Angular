@@ -6,7 +6,7 @@
     (change)="showProducts(selectItem.value)">
 
     <option value="">All</option>
-    <option *ngFor="let cat of StaticCat" [value]="cat">{{cat}}</option>
+    <option *ngFor="let cat of CatList" [value]="cat">{{cat}}</option>
   </select>
 </div>
 <hr />

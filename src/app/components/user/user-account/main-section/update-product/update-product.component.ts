@@ -5,6 +5,8 @@ import { ProductAPI } from 'src/app/models/product-api';
 import { Category } from 'src/app/models/category';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
+import { CatrgoriesFromApiService } from 'src/app/services/catrgories-from-api.service';
+import { ProductsFromAPIService } from 'src/app/services/products-from-api.service';
 
 @Component({
   selector: 'app-update-product',
@@ -17,10 +19,11 @@ export class UpdateProductComponent implements OnInit,OnChanges {
   notAdded:boolean=false;
   nameths:String='';
   prd:ProductAPI={} as ProductAPI
+  wantedProduct!:ProductAPI;
   myForm: FormGroup;
-  catList:Category[]=[];
+  CatList:string[]=[];
   private subscriptionsAdmin:Subscription[]=[];
-  constructor(private fb: FormBuilder,private ProductInserteAPI:AddingProductsServiceService , private activatedRoute: ActivatedRoute) {
+  constructor(private fb: FormBuilder,private prdSerAPI: ProductsFromAPIService,private catSerAPI: CatrgoriesFromApiService,private ProductInserteAPI:AddingProductsServiceService , private activatedRoute: ActivatedRoute) {
 
     this.myForm=this.fb.group({
       id:Date.now(),
@@ -41,6 +44,33 @@ export class UpdateProductComponent implements OnInit,OnChanges {
     // })
     this.sentPrdID=this.activatedRoute.snapshot.paramMap.get("id")
     this.myForm.valueChanges.subscribe() 
+
+    this.prdSerAPI.getProductByID(this.sentPrdID)
+    .subscribe(wantedProduct => {
+      this.wantedProduct = wantedProduct;
+      console.log(this.wantedProduct)
+      this.myForm.controls['title'].patchValue(this.wantedProduct.title);
+      this.myForm.controls['quantity'].patchValue(this.wantedProduct.quantity);
+      this.myForm.controls['desc'].patchValue(this.wantedProduct.desc);
+      this.myForm.controls['price'].patchValue(this.wantedProduct.price);
+      this.myForm.controls['imageSrc'].patchValue(this.wantedProduct.imageSrc);
+      this.myForm.controls['categories'].patchValue(this.wantedProduct.categories);
+
+    },
+      err => {
+        console.log(err);
+      });
+
+
+    this.catSerAPI.getAllCategories()
+    .subscribe(catList => {
+      this.CatList = catList;
+      //console.log("hamooooooooooo",this.CatList)
+    },
+      err => {
+        //console.log("erooooooor",this.CatList)
+        console.log(err);
+      });
   }
 
   ngOnChanges(changes: SimpleChanges): void {
