@@ -26,4 +26,8 @@ export class OrdersFromApiService {
   getOrdersByUserId(userId: string): Observable<OrderAPI[]> {
     return this.httpClient.get<OrderAPI[]>(environment.APIURL + '/orders/find/' + userId,this.httpOptions);
   }
+  editOrder(orderId: string,status:string):Observable<OrderAPI>{
+    // console.log("update product in Service",newPrd,prdId);
+    return this.httpClient.put<OrderAPI>(`${environment.APIURL}/orders/edit/${orderId}`,{status},this.httpOptions)
+  }
 }

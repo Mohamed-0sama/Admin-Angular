@@ -39,6 +39,8 @@ export class OrdersComponent implements OnInit {
         err => {
           console.log(err);
         });
+
+  
   }
   showOrderOfUser(id: string) {
     if (id === "") {
@@ -61,6 +63,15 @@ export class OrdersComponent implements OnInit {
             console.log(err);
           });
     }
+  }
+  showStatus(orderId:string,status:string){
+    console.log(status);
+    this.OrderSerAPI.editOrder(orderId,status)
+    .subscribe(updOrder=>
+      {
+        console.log(updOrder)
+      }
+      )
   }
 }
 

@@ -39,13 +39,19 @@
             </td>
             <td>
               <ul>
-                <li>city: {{ order.address.city }}</li>
-                <li>area: {{ order.address.area }}</li>
-                <li>street: {{ order.address.street }}</li>
+                <li>City: {{ order.address.city }}</li>
+                <li>Address Details: {{ order.address.addressDetails }}</li>
+                <!-- <li>street: {{ order.address.street }}</li> -->
               </ul>
             </td>
             <td>{{ order.amount }}</td>
-            <td [ngStyle]="{'color': order.status==='pending'?'darkred':'green'}">{{ order.status }}</td>
+            <!-- <td [ngStyle]="{'color': order.status==='pending'?'darkred':'green'}">{{ order.status }}</td> -->
+            <td><select name="status" [value]="order.status" id="userDD" class="form-select" #selectedStatus
+                (change)="showStatus(order._id,selectedStatus.value)">
+                <option value="Pending">Pending</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Delivered">Delivered</option>
+              </select></td>
           </tr>
         </tbody>
       </table>
