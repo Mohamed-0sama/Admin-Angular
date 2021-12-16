@@ -10,7 +10,8 @@ import { UserAuthService } from './../../../services/user-auth.service';
 })
 export class AuthLayoutComponent implements OnInit {
    admin:Iuser={username:"",password:""}
-  isShown:boolean=false;
+  isShown:boolean=true;
+
 
   constructor(public userAuthService:UserAuthService) { }
 
@@ -18,8 +19,13 @@ export class AuthLayoutComponent implements OnInit {
   }
 
   Login(){
+    // if(localStorage.getItem("adminIsLogged")!=="true")
+    if(this.userAuthService.isLogged){
+      this.isShown=true;
+    }else{
+      this.isShown=false;
+    }
     this.userAuthService.login(this.admin) ;
-    
   }
 
 

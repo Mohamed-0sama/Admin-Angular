@@ -20,7 +20,8 @@ export class AddUsersComponent implements OnInit {
       username:['',[Validators.required,Validators.minLength(10)]],
       email:['',[Validators.required,Validators.minLength(10),Validators.maxLength(40),Validators.email]],
       password:['',[Validators.required,Validators.maxLength(20),Validators.minLength(6)]],
-      imageSrc:['']
+      isAdmin:[]
+
     })
     
    }

@@ -22,9 +22,9 @@ export class UserAuthService {
       if(res.isAdmin==true){
         this.token=res.accessToken;
         this.isLogged=true;
-       localStorage.setItem('adminToken',this.token)
-       localStorage.setItem('adminIsLogged',this.isLogged.toString())
-        this.router.navigate(['/admin/Account/Dashboard'])
+        localStorage.setItem('adminToken',this.token)
+        localStorage.setItem('adminIsLogged',this.isLogged.toString())
+        this.router.navigate(['/admin/Account/Products'])
       }
     }
     ,(err)=>{console.log(err)})

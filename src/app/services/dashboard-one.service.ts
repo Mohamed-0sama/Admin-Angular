@@ -33,15 +33,15 @@ data! : []
     },
     series: [{
         type: 'column',
-        name: 'March',
+        name: 'Oct',
         data: [3, 2, 1, 3, 4]
     }, {
         type: 'column',
-        name: 'April',
+        name: 'Nov',
         data: [2, 3, 5, 7, 6]
     }, {
         type: 'column',
-        name: 'May',
+        name: 'Dec',
         data: [4, 3, 3, 9, 1]
     }, {
         type: 'spline',
@@ -88,7 +88,7 @@ this.yearlyConsumption = {
 
     yAxis: {
         title: {
-            text: 'Number of Employees'
+            text: 'Number of Orders'
         }
     },
 
@@ -114,16 +114,16 @@ this.yearlyConsumption = {
     },
 
     series: [{
-        name: 'Installation',
+        name: 'Electronics',
         data: [43934, 52503, 57177, 69658, 97031, 119931, 137133, 154175]
     }, {
-        name: 'Manufacturing',
+        name: 'Mobiles',
         data: [24916, 24064, 29742, 29851, 32490, 30282, 38121, 40434]
     }, {
-        name: 'Sales & Distribution',
+        name: 'Clothes',
         data: [11744, 17722, 16005, 19771, 20185, 24377, 32147, 39387]
     }, {
-        name: 'Project Development',
+        name: 'Shoes',
         data: [null, null, 7988, 12169, 15112, 22452, 34400, 34227]
     }, {
         name: 'Other',

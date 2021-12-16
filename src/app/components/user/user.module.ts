@@ -69,7 +69,7 @@ children:[
 {
   path: 'auth',component : AuthLayoutComponent
 },
-  {path: '', redirectTo: '/admin/Account/Dashboard', pathMatch: 'full'},
+  {path: '', redirectTo: '/admin/Account/Products', pathMatch: 'full'},
 ]
 
 @NgModule({

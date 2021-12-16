@@ -1,10 +1,12 @@
 <div class="card mt-2" style="width: 18rem;">
-    <img class="card-img-top" src="{{ImagesUrl}}{{user?.imageSrc}}" alt="Card image cap">
-    <div class="card-body">
-        <h5 class="card-title">Name: {{user?.username}}</h5>
-        <p class="card-text">Email: {{user?.email}}</p>
-        <p class="card-text">isAdmin: {{user?.isAdmin}}</p>
-        <hr>
-        <a class="btn btn-primary" (click)="goBack()">Go Back</a>
-    </div>
+  <img class="card-img-top" src="{{ImagesUrl}}{{user?.imageSrc}}" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">Name: {{user?.username}}</h5>
+    <p class="card-text">Email: {{user?.email}}</p>
+    <p class="card-text">isAdmin: {{user?.isAdmin}}</p>
+    <hr>
+    <mat-card-actions class="d-flex justify-content-around">
+      <a mat-button (click)="goBack()">Go Back</a>
+    </mat-card-actions>
+  </div>
 </div>

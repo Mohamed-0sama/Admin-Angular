@@ -34,7 +34,7 @@ export class ProductsFromAPIService {
 
  getProductByCatName(cName: string):Observable<ProductAPI[]>
  {
-   return this.httpClient.get<ProductAPI[]>(environment.APIURL + '/products?category=' +cName);
+   return this.httpClient.get<ProductAPI[]>(environment.APIURL + '/products?categories=' +cName);
  }
  deleteProductByID(pID: string):Observable<ProductAPI>
  {

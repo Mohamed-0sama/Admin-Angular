@@ -14,13 +14,13 @@
           id="floatingPassword" placeholder="Password">
         <label for="floatingPassword" class="text-muted">Password</label>
       </div>
-      <div [hidden]="!userAuthService.isLogged" class="alert alert-danger" role="alert">
+      <div [hidden]="isShown" class="alert alert-danger" role="alert">
         <strong>Wrong username or password</strong>
       </div>
 
 
 
-      <p><a href="./reset.html" class="text-decoration-none">Forgot your password? </a></p>
+      <!-- <p><a href="./reset.html" class="text-decoration-none">Forgot your password? </a></p> -->
 
       <button class="w-100 btn btn-lg btn-primary fs-6 fw-bold" type="submit" (click)=Login()>LOG IN</button>
     </form>

@@ -13,6 +13,7 @@ export class UsersServiceService {
   insertUser(user:UserAPI):Observable<UserAPI>{
     console.log("new added in Service",user);
     return this.httpClient.post<UserAPI>(`${environment.APIURL}/auth/register`,user)
+    // return this.httpClient.post<UserAPI>(`http://localhost:5000/api/auth/register`,user)
   }
 
   updateUser(userUpdated:UserAPI):Observable<UserAPI>{    
